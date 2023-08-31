@@ -197,7 +197,7 @@ function extract_package(input, output) {
 
 function install_package(dwnld_archive_path) {
     core.info(`Installing package "${dwnld_archive_path}" ...`)
-    exec('sudo installer -pkg ' + dwnld_archive_path + ' -target /', (error, stdout, stderr) => {
+    exec('sudo installer -allowUntrusted -dumplog -verbose -pkg ' + dwnld_archive_path + ' -target /', (error, stdout, stderr) => {
         if (error) {
             core.setFailed(error.message);
         }
